@@ -4,7 +4,33 @@ const _ = require('lodash'); // lodash module has a lot of good utilities functi
 const yargs = require('yargs'); // yargs module helps with commandline argument validation and key value pair args
 const notes = require('./notes.js');
 
-const argv = yargs.argv;
+// specify valid command line arguments
+const titleOption = {
+    describe: 'Title of note',
+    demand: true, // is this argument required
+    alias: 't' // we can now use '--t' instead of '--title'
+};
+
+const bodyOption = {
+    describe: 'Body of note',
+    demand: true,
+    alias: 'b'
+};
+
+const argv = yargs
+    .command('add', 'Add a new note', {
+        title: titleOption,
+        body: bodyOption
+    })
+    .command('list', 'List all notes')
+    .command('read', 'Read a note', {
+        title: titleOption
+    })
+    .command('remove', 'Remove a note', {
+        title: titleOption
+    })
+    .help()
+    .argv;
 
 var command = argv._[0];
 
