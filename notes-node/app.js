@@ -22,13 +22,14 @@ const argv = yargs
         title: titleOption,
         body: bodyOption
     })
-    .command('list', 'List all notes')
     .command('read', 'Read a note', {
         title: titleOption
     })
     .command('remove', 'Remove a note', {
         title: titleOption
     })
+    .command('list', 'List all notes')
+    .command('clear', 'Delete all notes')
     .help()
     .argv;
 
@@ -63,6 +64,9 @@ if (command === 'add') {
     } else {
         console.log("Note not found");
     }
+}else if (command === 'clear') {
+    notes.removeAll();
+    console.log("Deleted all notes");
 } else {
     console.log('Command not found');
 }

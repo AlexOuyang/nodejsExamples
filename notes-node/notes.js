@@ -33,6 +33,10 @@ var getAll = () => {
     return fetchNotes();
 };
 
+var removeAll = () => {
+    saveNotes([]);
+}
+
 var getNote = (title) => {
     var notes = fetchNotes();
     var read = notes.filter((note) => note.title === title);
@@ -57,6 +61,7 @@ var logNote = (note) => {
 module.exports = {
     addNote,
     getAll,
+    removeAll,
     getNote,
     removeNote,
     logNote
