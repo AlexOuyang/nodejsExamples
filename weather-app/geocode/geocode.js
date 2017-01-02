@@ -1,5 +1,6 @@
 const request = require('request');
 
+// callback = (errorMessage, results) => {}
 var geocodeAddress = (address, callback) => {
     var encodedAddress = encodeURIComponent(address); // This will convert spaces in address to %20 for url requests
 
@@ -21,7 +22,7 @@ var geocodeAddress = (address, callback) => {
             });
         }
     });
-}
+};
 
 
 module.exports = {
