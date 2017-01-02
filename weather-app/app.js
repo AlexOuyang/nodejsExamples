@@ -1,11 +1,16 @@
-const request = require('request');
+const yargs = require('yargs');
+const geocode = require('./geocode/geocode.js');
+const args = yargs
+    .options({
+        address: {
+            demand: true,
+            alias: 'a',
+            describe: 'Address to fetch weather for',
+            string: true // This makes yargs to always parse this option as a string
+        }
+    })
+    .help()
+    .alias('help', 'h')
+    .argv;
 
-request({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20street%20philadelphia',
-    json: true // will help us convert json string to json object automatically
-}, function (error, response, body) {
-    // console.log(JSON.stringify(body, undefined, 2)); // pretty printing json obj
-    console.log("Address: " + body.results[0].formatted_address);
-    console.log("Latitude: " + body.results[0].geometry.location.lat);
-    console.log("Longitude: " + body.results[0].geometry.location.lng);
-});
+geocode.geocodeAddress(args.address);
