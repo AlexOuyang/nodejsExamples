@@ -1,3 +1,8 @@
+/*
+    App usage example:
+        node app.js -a '27 Stratford drive San Francisco'
+*/
+
 const yargs = require('yargs');
 const geocode = require('./geocode/geocode.js');
 const weather = require('./weather/weather.js');
