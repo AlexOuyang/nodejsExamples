@@ -24,6 +24,32 @@ var geocodeAddress = (address, callback) => {
     });
 };
 
+// var geocodeAddress = (address) => {
+//     return new Promise((resolve, reject) => {
+//         request({
+//             // url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20street%20philadelphia',
+//             url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodedAddress,
+//             json: true // will help us convert json string to json object automatically
+//         }, function (error, response, body) {
+//             if (error) {
+//                 reject('Unable to connect to google server');
+//             } else if (body.status === 'ZERO_RESULTS') {
+//                 reject('Unable to find that address');
+//             } else if (body.status === 'OK') {
+//                 // console.log(JSON.stringify(body, undefined, 2)); // pretty printing json obj
+//                 resolve({
+//                     address: body.results[0].formatted_address,
+//                     latitude: body.results[0].geometry.location.lat,
+//                     longitude: body.results[0].geometry.location.lng
+//                 });
+//             }
+//         });
+
+//     });
+//     var encodedAddress = encodeURIComponent(address); // This will convert spaces in address to %20 for url requests
+
+// };
+
 
 module.exports = {
     geocodeAddress
